@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="container-fluid">
+    <h1>Media</h1>
+    <p>Upload media: Documents, Images and Videos</p>
+</div>
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Uploading Media</h2>
+            <p>
+                Upload media files and view them on the website by selecting from the options on the right, ranging from: <br/>
+                <ul>
+                    <li>Documents,</li>
+                    <li>Images and,</li>
+                    <li>Videos</li>
+                </ul>
+                then proceed to select the file to be upload, and finally pressing the submit button.
+                <br/> You may view the uploaded file by selecting the file type/group from the navbar.
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Option Select</h2>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.RadioButton("ftype", "Document") <span>Document</span><br />
+                @Html.RadioButton("ftype", "Image") <span>Image</span><br />
+                @Html.RadioButton("ftype", "Video") <span>Video</span>
+                <br><br>
+
+                @Html.TextBox("file", "", new { type = "file" })<br>
+                <input type="submit" value="Submit">
+                @ViewBag.Message
+            }
+        </div>
+    </div>
+</div>
